@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+.sprite {
+  margin: auto;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+}
+
+.tile {
+  z-index: 5;
+  position: absolute;
+}
+
+.grid {
+  background-color: black;
+  position: relative;
+  margin: 0 auto;
+  width: 468px;
+  height: 468px;
+  border: 50px solid #747474;
+}
+body {
+  background-color: black;
+}

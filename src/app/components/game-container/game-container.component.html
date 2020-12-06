@@ -1,0 +1,7 @@
+<div *ngIf="grid" class="grid">
+  <div *ngFor="let row of grid" class="grid-row">
+    <tile *ngFor="let tile of row" [tile]="tile"></tile>
+  </div>
+  <player></player>
+  <round></round>
+</div>
