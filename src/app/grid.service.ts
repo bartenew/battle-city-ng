@@ -4,17 +4,20 @@ import Position from "./models/position.model";
 import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
+import {environment} from "../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GridService {
 
+  gridUrl: string
   constructor(private http: HttpClient) {
+    this.gridUrl = environment.gridUrl;
   }
 
   loadGrid(): Observable<Tile[][]> {
-    return this.http.get<TileBuildArg[]>('assets/grid.json').pipe(map(tileArgs => {
+    return this.http.get<TileBuildArg[]>(this.gridUrl).pipe(map(tileArgs => {
       const grid = this.createEmptyGrid();
       tileArgs.forEach((arg) => {
         const tile = TerrainTile.create(arg.type, arg.position);
