@@ -4,30 +4,28 @@ import {Tile} from "./tile.model";
 
 export default class Player extends Tile {
   speed = 0.2;
+  reloading = false;
 
   constructor(position: Position) {
-    super(PLAYER_SPRITE.UP[0], position);
+    super(position);
   }
 
   set direction(value: Direction) {
     this.position.direction = value;
-    this.updateSprite()
   }
 
-  updateSprite() {
+  get spriteUrl() {
     switch (this.position.direction) {
       case "UP":
-        this.spriteUrl = PLAYER_SPRITE.UP[0];
-        break;
+        return PLAYER_SPRITE.UP[0];
       case "DOWN":
-        this.spriteUrl = PLAYER_SPRITE.DOWN[0];
-        break;
+        return PLAYER_SPRITE.DOWN[0];
       case "LEFT":
-        this.spriteUrl = PLAYER_SPRITE.LEFT[0];
-        break;
+        return PLAYER_SPRITE.LEFT[0];
       case "RIGHT":
-        this.spriteUrl = PLAYER_SPRITE.RIGHT[0];
-        break;
+        return PLAYER_SPRITE.RIGHT[0];
+      default:
+        return PLAYER_SPRITE.UP[0];
     }
   }
 

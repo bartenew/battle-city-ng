@@ -17,7 +17,7 @@ export class AppComponent {
     this.gameStore.updateEditorTile('BRICK')
   }
 
-  @HostListener('document:keydown.2', ['$event'])
+  @HostListener('document:keydown.enemy_1', ['$event'])
   selectConcrete() {
     this.gameStore.updateEditorTile('CONCRETE')
   }
@@ -25,5 +25,10 @@ export class AppComponent {
   @HostListener('document:keydown.3', ['$event'])
   selectWater() {
     this.gameStore.updateEditorTile('WATER')
+  }
+
+  @HostListener('document:keydown.4', ['$event'])
+  selectBase() {
+    this.gameStore.updateEditorTile('BASE')
   }
 }

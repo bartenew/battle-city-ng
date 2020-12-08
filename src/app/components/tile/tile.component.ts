@@ -3,7 +3,7 @@ import TileStyle from "../../models/tile-style.interface";
 import Position from "../../models/position.model";
 import {GameStoreService} from "../../game-store.service";
 import {TILE_SIZE} from "../../models/game.const";
-import {Tile} from "../../models/tile.model";
+import {TerrainTile, Tile} from "../../models/tile.model";
 
 @Component({
   selector: 'tile',
@@ -31,6 +31,6 @@ export class TileComponent implements OnInit {
 
   toggleTile() {
     const {x, y} = this.tile!.position!;
-    this.gameStore.setTile(Tile.create(this.gameStore.gameState.editorTile, new Position(x, y)));
+    this.gameStore.setTile(TerrainTile.create(this.gameStore.gameState.editorTile, new Position(x, y)));
   }
 }

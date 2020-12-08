@@ -1,5 +1,5 @@
 [
-  {
+   {
     "position": {
       "x": 0,
       "y": 0
@@ -519,6 +519,27 @@
   },
   {
     "position": {
+      "x": 4,
+      "y": 11
+    },
+    "type": "BRICK"
+  },
+  {
+    "position": {
+      "x": 5,
+      "y": 11
+    },
+    "type": "BRICK"
+  },
+  {
+    "position": {
+      "x": 6,
+      "y": 11
+    },
+    "type": "BRICK"
+  },
+  {
+    "position": {
       "x": 9,
       "y": 11
     },
@@ -555,6 +576,27 @@
   {
     "position": {
       "x": 3,
+      "y": 12
+    },
+    "type": "BRICK"
+  },
+  {
+    "position": {
+      "x": 4,
+      "y": 12
+    },
+    "type": "BRICK"
+  },
+  {
+    "position": {
+      "x": 5,
+      "y": 12
+    },
+    "type": "BASE"
+  },
+  {
+    "position": {
+      "x": 6,
       "y": 12
     },
     "type": "BRICK"

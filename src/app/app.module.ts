@@ -7,6 +7,7 @@ import {TileComponent} from './components/tile/tile.component';
 import {PlayerComponent} from './components/player/player.component';
 import {HttpClientModule} from "@angular/common/http";
 import {RoundComponent} from './components/round/round.component';
+import { EnemyComponent } from './components/enemy/enemy.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {RoundComponent} from './components/round/round.component';
     GameContainerComponent,
     TileComponent,
     PlayerComponent,
-    RoundComponent
+    RoundComponent,
+    EnemyComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,6 @@ export default class Position {
     this.y = y;
     this.direction = direction;
   }
-
   move(speed: number): Position {
     switch (this.direction) {
       case "UP":

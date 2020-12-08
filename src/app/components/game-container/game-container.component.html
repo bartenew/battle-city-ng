@@ -2,6 +2,7 @@
   <div *ngFor="let row of grid" class="grid-row">
     <tile *ngFor="let tile of row" [tile]="tile"></tile>
   </div>
+  <enemy *ngFor="let enemy of enemies" [enemy]="enemy"></enemy>
   <player></player>
-  <round></round>
+  <round *ngFor="let round of rounds" [round]="round"></round>
 </div>

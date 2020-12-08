@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {AudioService} from "../../audio/audio.service";
 import Player from "../../models/player.model";
-import {EmptyTile, Tile} from "../../models/tile.model";
+import {Tile} from "../../models/tile.model";
 import {Round} from "../../models/round.model";
 import {GameStoreService} from "../../game-store.service";
-import Position from "../../models/position.model";
+import Enemy from "../../models/enemy.model";
 
 @Component({
   selector: 'game-container',
@@ -15,7 +15,8 @@ export class GameContainerComponent implements OnInit {
 
   grid: Tile[][] = []
   player?: Player;
-  round?: Round;
+  rounds?: Set<Round>;
+  enemies?: Set<Enemy>
 
   constructor(private audio: AudioService, private gameStore: GameStoreService) {
   }
@@ -24,7 +25,8 @@ export class GameContainerComponent implements OnInit {
     this.gameStore.gameState$.subscribe((gameState) => {
       this.player = gameState.player;
       this.grid = gameState.grid;
-      this.round = gameState.round;
+      this.rounds = gameState.rounds;
+      this.enemies = gameState.enemies;
     })
     this.gameStore.init();
     this.animate(0);
@@ -35,26 +37,17 @@ export class GameContainerComponent implements OnInit {
     // spawn enemies
     // move enemies
     // check base
-    if (this.round) {
-      this.round.move();
-      const hitTile = this.getTileAt(this.round.position);
-      if (!hitTile.walkable) {
-        this.gameStore.hitTile(this.round, hitTile.position)
-      }
-    }
+    this.gameStore.flyRounds();
     this.gameStore.clearExplodedTiles();
+    if (this.gameStore.gameState.enemies.size < 1) {
+      console.log('YEEHA')
+      this.gameStore.spawnEnemy();
+    }
+    this.gameStore.moveEnemies()
   }
 
   animate(now: number) {
     this.frame(now)
     requestAnimationFrame(this.animate.bind(this));
-  }
-
-  private getTileAt(position: Position) {
-    const x = Math.floor(position.x);
-    const y = Math.floor(position.y);
-
-    const tile = this.grid[y] && this.grid[y][x];
-    return tile || new EmptyTile(position);
   }
 }
