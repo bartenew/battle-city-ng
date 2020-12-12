@@ -1,5 +1,5 @@
 import {Component, HostListener} from '@angular/core';
-import {GameStoreService} from "../game-store.service";
+import {DirectorService} from "../director.service";
 
 @Component({
   selector: 'app-root',
@@ -9,26 +9,26 @@ import {GameStoreService} from "../game-store.service";
 export class AppComponent {
   title = 'battle-city-ng';
 
-  constructor(private gameStore: GameStoreService) {
+  constructor(private director: DirectorService) {
   }
 
   @HostListener('document:keydown.1', ['$event'])
   selectBrick() {
-    this.gameStore.updateEditorTile('BRICK')
+    this.director.updateEditorTile('BRICK')
   }
 
-  @HostListener('document:keydown.enemy_1', ['$event'])
+  @HostListener('document:keydown.2', ['$event'])
   selectConcrete() {
-    this.gameStore.updateEditorTile('CONCRETE')
+    this.director.updateEditorTile('CONCRETE')
   }
 
   @HostListener('document:keydown.3', ['$event'])
   selectWater() {
-    this.gameStore.updateEditorTile('WATER')
+    this.director.updateEditorTile('WATER')
   }
 
   @HostListener('document:keydown.4', ['$event'])
   selectBase() {
-    this.gameStore.updateEditorTile('BASE')
+    this.director.updateEditorTile('BASE')
   }
 }

@@ -4,6 +4,7 @@ import TileStyle from "../../models/tile-style.interface";
 import {GameStoreService} from "../../game-store.service";
 import {TILE_SIZE} from "../../models/game.const";
 import {Tile} from "../../models/tile.model";
+import {DirectorService} from "../../director.service";
 
 @Component({
   selector: 'player',
@@ -14,7 +15,7 @@ export class PlayerComponent implements OnInit {
   player?: Player;
   grid: Tile[][] = []
 
-  constructor(private gameStore: GameStoreService) {
+  constructor(private gameStore: GameStoreService, private director: DirectorService) {
   }
 
   ngOnInit(): void {
@@ -61,6 +62,6 @@ export class PlayerComponent implements OnInit {
 
   @HostListener('document:keydown.space', ['$event'])
   shoot() {
-    this.gameStore.shoot();
+    this.director.shoot();
   }
 }

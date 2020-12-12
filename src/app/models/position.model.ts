@@ -24,4 +24,8 @@ export default class Position {
         return this;
     }
   }
+
+  asRoundedPosition() {
+    return new Position(Math.floor(this.x), Math.floor(this.y), this.direction)
+  }
 }

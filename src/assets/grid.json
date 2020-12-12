@@ -1,588 +1,175 @@
 [
-   {
-    "position": {
-      "x": 0,
-      "y": 0
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 1,
-      "y": 0
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 2,
-      "y": 0
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 7,
-      "y": 0
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 8,
-      "y": 0
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 9,
-      "y": 0
-    },
-    "type": "BRICK"
-  },
   {
     "position": {
       "x": 10,
-      "y": 0
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 11,
-      "y": 0
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 12,
-      "y": 0
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 0,
-      "y": 1
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 1,
-      "y": 1
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 2,
-      "y": 1
+      "y": 2
     },
     "type": "BRICK"
   },
   {
     "position": {
       "x": 3,
-      "y": 1
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 7,
-      "y": 1
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 12,
-      "y": 1
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 0,
-      "y": 2
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 1,
-      "y": 2
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 7,
-      "y": 2
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 12,
-      "y": 2
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 0,
       "y": 3
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 1,
-      "y": 3
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 7,
-      "y": 3
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 12,
-      "y": 3
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 0,
-      "y": 4
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 1,
-      "y": 4
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 7,
-      "y": 4
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 12,
-      "y": 4
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 0,
-      "y": 5
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 1,
-      "y": 5
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 2,
-      "y": 5
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 3,
-      "y": 5
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 6,
-      "y": 5
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 7,
-      "y": 5
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 8,
-      "y": 5
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 9,
-      "y": 5
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 10,
-      "y": 5
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 11,
-      "y": 5
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 12,
-      "y": 5
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 0,
-      "y": 6
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 1,
-      "y": 6
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 6,
-      "y": 6
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 7,
-      "y": 6
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 8,
-      "y": 6
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 9,
-      "y": 6
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 12,
-      "y": 6
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 0,
-      "y": 7
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 1,
-      "y": 7
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 6,
-      "y": 7
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 7,
-      "y": 7
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 8,
-      "y": 7
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 9,
-      "y": 7
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 12,
-      "y": 7
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 0,
-      "y": 8
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 1,
-      "y": 8
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 6,
-      "y": 8
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 7,
-      "y": 8
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 8,
-      "y": 8
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 9,
-      "y": 8
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 12,
-      "y": 8
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 0,
-      "y": 9
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 1,
-      "y": 9
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 6,
-      "y": 9
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 7,
-      "y": 9
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 8,
-      "y": 9
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 9,
-      "y": 9
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 12,
-      "y": 9
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 0,
-      "y": 10
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 1,
-      "y": 10
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 6,
-      "y": 10
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 7,
-      "y": 10
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 8,
-      "y": 10
-    },
-    "type": "BRICK"
-  },
-  {
-    "position": {
-      "x": 9,
-      "y": 10
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 12,
-      "y": 10
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 0,
-      "y": 11
     },
     "type": "BRICK"
   },
   {
     "position": {
       "x": 4,
-      "y": 11
+      "y": 3
     },
     "type": "BRICK"
   },
   {
     "position": {
       "x": 5,
-      "y": 11
+      "y": 3
     },
     "type": "BRICK"
   },
   {
     "position": {
       "x": 6,
-      "y": 11
+      "y": 3
     },
     "type": "BRICK"
   },
   {
     "position": {
-      "x": 9,
-      "y": 11
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 12,
-      "y": 11
-    },
-    "type": "CONCRETE"
-  },
-  {
-    "position": {
-      "x": 0,
-      "y": 12
+      "x": 10,
+      "y": 3
     },
     "type": "BRICK"
   },
   {
     "position": {
-      "x": 1,
-      "y": 12
+      "x": 10,
+      "y": 4
     },
     "type": "BRICK"
   },
   {
     "position": {
-      "x": 2,
-      "y": 12
+      "x": 10,
+      "y": 5
+    },
+    "type": "BRICK"
+  },
+  {
+    "position": {
+      "x": 10,
+      "y": 6
     },
     "type": "BRICK"
   },
   {
     "position": {
       "x": 3,
-      "y": 12
+      "y": 7
+    },
+    "type": "CONCRETE"
+  },
+  {
+    "position": {
+      "x": 4,
+      "y": 7
+    },
+    "type": "CONCRETE"
+  },
+  {
+    "position": {
+      "x": 5,
+      "y": 7
+    },
+    "type": "CONCRETE"
+  },
+  {
+    "position": {
+      "x": 6,
+      "y": 7
+    },
+    "type": "CONCRETE"
+  },
+  {
+    "position": {
+      "x": 7,
+      "y": 7
+    },
+    "type": "CONCRETE"
+  },
+  {
+    "position": {
+      "x": 8,
+      "y": 7
+    },
+    "type": "CONCRETE"
+  },
+  {
+    "position": {
+      "x": 9,
+      "y": 7
     },
     "type": "BRICK"
   },
   {
     "position": {
-      "x": 4,
+      "x": 10,
+      "y": 7
+    },
+    "type": "BRICK"
+  },
+  {
+    "position": {
+      "x": 11,
+      "y": 7
+    },
+    "type": "BRICK"
+  },
+  {
+    "position": {
+      "x": 12,
+      "y": 7
+    },
+    "type": "BRICK"
+  },
+  {
+    "position": {
+      "x": 3,
+      "y": 10
+    },
+    "type": "BRICK"
+  },
+  {
+    "position": {
+      "x": 7,
+      "y": 10
+    },
+    "type": "BRICK"
+  },
+  {
+    "position": {
+      "x": 3,
+      "y": 11
+    },
+    "type": "BRICK"
+  },
+  {
+    "position": {
+      "x": 7,
+      "y": 11
+    },
+    "type": "BRICK"
+  },
+  {
+    "position": {
+      "x": 8,
+      "y": 11
+    },
+    "type": "BRICK"
+  },
+  {
+    "position": {
+      "x": 3,
       "y": 12
     },
     "type": "BRICK"
@@ -596,7 +183,14 @@
   },
   {
     "position": {
-      "x": 6,
+      "x": 7,
+      "y": 12
+    },
+    "type": "BRICK"
+  },
+  {
+    "position": {
+      "x": 8,
       "y": 12
     },
     "type": "BRICK"
@@ -606,7 +200,7 @@
       "x": 9,
       "y": 12
     },
-    "type": "CONCRETE"
+    "type": "BRICK"
   },
   {
     "position": {
@@ -620,13 +214,13 @@
       "x": 11,
       "y": 12
     },
-    "type": "CONCRETE"
+    "type": "BRICK"
   },
   {
     "position": {
       "x": 12,
       "y": 12
     },
-    "type": "CONCRETE"
+    "type": "BRICK"
   }
 ]

@@ -30,4 +30,13 @@ export class Round extends Tile {
   move() {
     this.position = this.position.move(this.speed);
   }
+
+  isHit(grid: Tile[][]) {
+    const {x, y} = this.position.asRoundedPosition();
+    if (y < 0 || y >= grid.length || x >= grid[y].length || x < 0) return false;
+    const tile = grid[y][x];
+    const xOverlaps = this.left < tile.right && this.right > tile.left
+    const yOverlaps = this.top < tile.bottom && this.bottom > tile.top;
+    return xOverlaps && yOverlaps && !tile.walkable;
+  }
 }

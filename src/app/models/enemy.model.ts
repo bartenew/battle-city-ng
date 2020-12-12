@@ -1,10 +1,16 @@
 import {ENEMY_SPRITE} from "./game.const";
 import Position from "./position.model";
-import Player from "./player.model";
+import Player, {Direction} from "./player.model";
+import {Tile} from "./tile.model";
+import {AStarFinder} from "astar-typescript";
+import {IPoint} from "astar-typescript/dist/interfaces/astar.interfaces";
+import {Round} from "./round.model";
 
 export default class Enemy extends Player {
+
   constructor(position: Position) {
     super(position);
+    this.speed = 0.08;
   }
 
   get destroyable() {
@@ -28,5 +34,24 @@ export default class Enemy extends Player {
       default:
         return ENEMY_SPRITE.UP[0];
     }
+  }
+
+  calculatePath(grid: Tile[][]) {
+    const numericGrid = grid.map(row => row.map((tile: Tile) => tile.walkable ? 0 : 1))
+    const aStartFinder = new AStarFinder({
+      grid: {
+        matrix: numericGrid
+      }
+    });
+    const roundedPosition = this.position.asRoundedPosition();
+    const start: IPoint = {...roundedPosition};
+    const path = aStartFinder.findPath(start, {x: 5, y: 10})
+  }
+
+
+
+  shoot() {
+    this.reloading = true;
+    return new Round(this.position, this);
   }
 }

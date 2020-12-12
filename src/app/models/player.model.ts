@@ -33,18 +33,29 @@ export default class Player extends Tile {
     this.direction = direction || this.position.direction;
     const targetPosition = this.position.move(this.speed)
 
-    if (this.isBlocked(grid, targetPosition)) return false;
+    if (this.isBlocked(grid, targetPosition)) {
+      return false;
+    }
     this.position = targetPosition;
     return true;
   }
 
-  protected isBlocked(grid: Tile[][], targetPositon: Position) {
-    const x = Math.floor(targetPositon.x);
-    const y = Math.floor(targetPositon.y);
+  protected isBlocked(grid: Tile[][], targetPosition: Position) {
+    const targetX = Math.floor(targetPosition.x);
+    const targetY = Math.floor(targetPosition.y);
 
-    const blockingTileInTheWay = grid[y] && grid[y][x] && !grid[y][x].walkable;
-    const offGrid = !grid[y] || !grid[y][x];
-    return blockingTileInTheWay || offGrid;
+    for (let y = targetY; y < targetY + 2; y++) {
+      for (let x = targetX; x < targetX + 2; x++) {
+        const tile = grid[y][x];
+        const xOverlaps = this.left < tile.right && this.right > tile.left
+        const yOverlaps = this.top < tile.bottom && this.bottom > tile.top;
+        const collision = xOverlaps && yOverlaps;
+        if (collision && !tile.walkable) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }
 export type Direction = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
