@@ -31,24 +31,26 @@ export default class Player extends Tile {
 
   move(grid: Tile[][], direction: Direction): boolean {
     this.direction = direction || this.position.direction;
-    const targetPosition = this.position.move(this.speed)
+    const old = this.position
+    this.position = this.position.move(this.speed)
 
-    if (this.isBlocked(grid, targetPosition)) {
+    if (this.isBlocked(grid)) {
+      this.position = old;
       return false;
     }
-    this.position = targetPosition;
     return true;
   }
 
-  protected isBlocked(grid: Tile[][], targetPosition: Position) {
-    const targetX = Math.floor(targetPosition.x);
-    const targetY = Math.floor(targetPosition.y);
+  protected isBlocked(grid: Tile[][]) {
+    const targetX = Math.floor(this.position.x);
+    const targetY = Math.floor(this.position.y);
 
     for (let y = targetY; y < targetY + 2; y++) {
       for (let x = targetX; x < targetX + 2; x++) {
         const tile = grid[y][x];
-        const xOverlaps = this.left < tile.right && this.right > tile.left
-        const yOverlaps = this.top < tile.bottom && this.bottom > tile.top;
+        // player bitmap is 28x28 while tile is 36x36
+        const xOverlaps = this.left -8 < tile.right && this.right + 8 > tile.left
+        const yOverlaps = this.top - 8 < tile.bottom && this.bottom - 8 > tile.top;
         const collision = xOverlaps && yOverlaps;
         if (collision && !tile.walkable) {
           return true;

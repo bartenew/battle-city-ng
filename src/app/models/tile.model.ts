@@ -6,8 +6,6 @@ export class Tile {
   /** Determine if a tile is a wall */
   position: Position
   type: TileType;
-  size = TILE_SIZE;
-
   constructor(position: Position, spriteUrl?: string, type?: TileType) {
     this.position = position;
     this._spriteUrl = spriteUrl;
@@ -29,19 +27,19 @@ export class Tile {
   }
 
   get top() {
-    return this.position.y * this.size
+    return this.position.y * TILE_SIZE;
   }
 
   get left() {
-    return this.position.x * this.size
+    return this.position.x * TILE_SIZE
   }
 
   get right() {
-    return this.left + this.size
+    return this.left + TILE_SIZE
   };
 
   get bottom() {
-    return this.top + this.size
+    return this.top + TILE_SIZE
   };
 
   asTileBuildArg(): TileBuildArg {
