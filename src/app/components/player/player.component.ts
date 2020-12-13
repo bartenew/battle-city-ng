@@ -25,7 +25,7 @@ export class PlayerComponent implements OnInit {
     })
   }
 
-  getStyles(): TileStyle {
+  cssPosition(): TileStyle {
     const {position} = this.player!;
     return {
       left: position.x * TILE_SIZE + "px",

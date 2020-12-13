@@ -5,7 +5,7 @@ export const TILE_SPRITES: Record<string, string> = {
   CONCRETE: 'assets/sprites/concrete.bmp',
   BUSH: 'assets/sprites/bush.bmp',
   EXPLODED: 'assets/sprites/exp_small.bmp',
-  WATER: 'assets/sprites/water_1.bmp',
+  WATER: 'assets/sprites/water.gif',
   BASE: 'assets/sprites/base.bmp'
 }
 

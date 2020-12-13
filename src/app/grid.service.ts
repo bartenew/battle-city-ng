@@ -29,9 +29,9 @@ export class GridService {
 
   createEmptyGrid() {
     const grid = []
-    for (let y = 0; y < 13; y++) {
-      grid[y] = new Array(13);
-      for (let x = 0; x < 13; x++) {
+    for (let y = 0; y < 21; y++) {
+      grid[y] = new Array(21);
+      for (let x = 0; x < 21; x++) {
         grid[y][x] = TerrainTile.create('EMPTY', new Position(x, y));
       }
     }

@@ -4,10 +4,20 @@ import GameState from "./models/game-state.interface";
 import Position from "./models/position.model";
 import Player from "./models/player.model";
 import {Round} from "./models/round.model";
-import {AUDIO, HIT_SOUNDS, TILE_ANIMATION_PERIOD, TILE_SIZE} from "./models/game.const";
+import {TILE_SIZE} from "./models/game.const";
 import {AudioService} from "./audio/audio.service";
-import {ExplodedTile, TerrainTile, Tile, TileType} from "./models/tile.model";
+import {ExplodedTile, Tile} from "./models/tile.model";
 import Enemy from "./models/enemy.model";
+
+function initialState(): GameState {
+  return {
+    player: new Player(new Position(5, 10, 'UP')),
+    enemies: new Set<Enemy>(),
+    rounds: new Set<Round>(),
+    editorTile: 'BRICK',
+    grid: [], height: TILE_SIZE * 21, width: TILE_SIZE * 21, explodedTiles: new Set<ExplodedTile>()
+  }
+}
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +27,7 @@ export class GameStoreService {
   constructor(private audio: AudioService) {
   }
 
-  private _gameState = new BehaviorSubject<GameState>(INITIAL_STATE);
+  private _gameState = new BehaviorSubject<GameState>(initialState());
 
   readonly gameState$ = this._gameState.asObservable();
 
@@ -31,7 +41,7 @@ export class GameStoreService {
 
   get baseTile() {
     const {grid} = this.gameState;
-    return grid[12][5];
+    return grid[20][9];
   }
 
   setTile(tile: Tile) {
@@ -41,14 +51,7 @@ export class GameStoreService {
   }
 
   reset() {
-    this.gameState = INITIAL_STATE;
+    this.gameState = initialState();
   }
 }
 
-const INITIAL_STATE: GameState = {
-  player: new Player(new Position(5, 10, 'UP')),
-  enemies: new Set<Enemy>(),
-  rounds: new Set<Round>(),
-  editorTile: 'BRICK',
-  grid: [], height: TILE_SIZE * 13, width: TILE_SIZE * 13, explodedTiles: new Set<ExplodedTile>()
-};

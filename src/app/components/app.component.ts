@@ -31,4 +31,9 @@ export class AppComponent {
   selectBase() {
     this.director.updateEditorTile('BASE')
   }
+
+  @HostListener('document:keydown.5', ['$event'])
+  selectBush() {
+    this.director.updateEditorTile('BUSH')
+  }
 }

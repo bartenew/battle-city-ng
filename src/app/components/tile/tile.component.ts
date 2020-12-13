@@ -19,7 +19,7 @@ export class TileComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getStyles(): TileStyle {
+  cssPosition(): TileStyle {
     const {x, y} = this.tile!.position!;
     return {
       left: x * TILE_SIZE + "px",
