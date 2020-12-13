@@ -8,17 +8,21 @@ import {Round} from "./models/round.model";
 import Position from "./models/position.model";
 import {ExplodedTile, TerrainTile, Tile, TileType} from "./models/tile.model";
 import Enemy from "./models/enemy.model";
+import {AStarFinder} from "astar-typescript";
+import {IPoint} from "astar-typescript/dist/interfaces/astar.interfaces";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DirectorService {
 
+  fiveSecondTimer = 0;
   constructor(private store: GameStoreService, private audio: AudioService, private gridService: GridService) {
   }
 
   start() {
     this.gridService.loadGrid().toPromise().then(grid => {
+      this.store.reset();
       const newState = this.store.gameState;
       newState.grid = grid;
       this.store.gameState = newState;
@@ -34,10 +38,12 @@ export class DirectorService {
     // spawn enemies
     // move enemies
     // check base
+    const elapsed = now - this.fiveSecondTimer;
     this.flyRounds();
     this.clearExplodedTiles();
-    if (this.store.gameState.enemies.size < 1) {
+    if (this.store.gameState.enemies.size < 3 && elapsed > 5000) {
       this.spawnEnemy();
+      this.fiveSecondTimer = now;
     }
     this.moveEnemies()
   }
@@ -72,13 +78,14 @@ export class DirectorService {
   }
 
   shoot() {
-    if (this.store.gameState.player.reloading) return;
-    const {position} = this.store.gameState.player!;
+    const {player} = this.store.gameState;
+    if (player.reloading) return;
+    const {position} = player!;
     const {x, y, direction} = position;
     const newGameState = this.store.gameState;
-    const playerRound = new Round(new Position(x, y, direction), this.store.gameState.player);
+    const playerRound = new Round(new Position(x, y, direction), player);
     newGameState.rounds.add(playerRound);
-    this.store.gameState.player.reloading = true;
+    player.reloading = true;
     this.store.gameState = newGameState;
     this.audio.play(AUDIO.SHOT);
   }
@@ -129,20 +136,59 @@ export class DirectorService {
   moveEnemies() {
     const gameState = this.store.gameState;
     gameState.enemies.forEach(enemy => {
-      const directionToBase = enemy.nextDirection(gameState.grid);
-      if (directionToBase === false) {
+      const path = this.getPath(enemy.position, new Position(5, 10));
+      if (path.length === 0) {
         const round = enemy.shoot()
-        if (round) gameState.rounds.add(round);
+        round && gameState.rounds.add(round);
+
+
+        enemy.move(gameState.grid, 'RIGHT')
+        return
       }
-      const blocked = !enemy.move(gameState.grid, directionToBase);
-      
+      const [nextX, nextY] = path[0]
+      this.moveTo(nextX, nextY, enemy);
     })
     this.store.gameState = gameState;
   }
 
+  moveTo(x: number, y: number, enemy: Enemy) {
+
+    const targetLeft = x * 36
+    const targetTop = y * 36
+
+    const grid = this.store.gameState.grid;
+    if (grid[y][x].destroyable) {
+      const round = enemy.shoot()
+      round && this.store.gameState.rounds.add(round);
+
+    }
+    if (targetTop < enemy.top - 8) enemy.move(grid, 'UP');
+    else if (targetLeft < enemy.left) enemy.move(grid, 'LEFT');
+    else if (targetTop > enemy.top) enemy.move(grid, 'DOWN');
+    else {
+      enemy.move(grid, 'RIGHT');
+    }
+  }
+
+  getPath(posOne: Position, posTwo: Position) {
+    const gameState = this.store.gameState;
+    const numericGrid = gameState.grid.map(row => row.map((tile: Tile) => (tile.walkable || tile.destroyable) ? 0 : 1))
+    const aStartFinder = new AStarFinder({
+      grid: {
+        matrix: numericGrid
+      },
+      diagonalAllowed: false,
+      includeStartNode: false
+    });
+    const {x,y} = posOne.asRoundedPosition();
+    const start: IPoint = {x,y};
+    return  aStartFinder.findPath(start, posTwo);
+  }
+
   private isInGrid(position: Position) {
-    const x = Math.floor(position.x);
-    const y = Math.floor(position.y);
-    return this.store.gameState.grid[y] && this.store.gameState.grid[y][x];
+    const x = ~~position.x;
+    const y = ~~position.y;
+    const {grid} = this.store.gameState;
+    return (grid[y] || [])[x] !== undefined;
   }
 }

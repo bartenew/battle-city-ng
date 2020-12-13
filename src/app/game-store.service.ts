@@ -35,7 +35,9 @@ export class GameStoreService {
     this.gameState = newState;
   }
 
-
+  reset() {
+    this.gameState = INITIAL_STATE;
+  }
 }
 
 const INITIAL_STATE: GameState = {

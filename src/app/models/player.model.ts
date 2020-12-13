@@ -38,21 +38,22 @@ export default class Player extends Tile {
       this.position = old;
       return false;
     }
-    console.log(this.position.asRoundedPosition())
     return true;
   }
 
   protected isBlocked(grid: Tile[][]) {
-    if (this.position.y < 0) return true
 
     const targetX = Math.floor(this.position.x);
     const targetY = Math.floor(this.position.y);
 
+    if ((grid[targetY]||[])[targetX] === undefined) return true;
+
     for (let y = targetY; y < targetY + 2; y++) {
       for (let x = targetX; x < targetX + 2; x++) {
         const tile = grid[y][x];
+        if (!tile) continue;
         // player bitmap is 28x28 while tile is 36x36
-        const xOverlaps = this.left -8 < tile.right && this.right + 8 > tile.left
+        const xOverlaps = this.left - 8 < tile.right && this.right - 8 > tile.left
         const yOverlaps = this.top - 8 < tile.bottom && this.bottom - 8 > tile.top;
         const collision = xOverlaps && yOverlaps;
         if (collision && !tile.walkable) {

@@ -36,36 +36,6 @@ export default class Enemy extends Player {
     }
   }
 
-  nextDirection(grid: Tile[][]): Direction | boolean {
-    const numericGrid = grid.map(row => row.map((tile: Tile) => tile.walkable ? 0 : 1))
-    const aStartFinder = new AStarFinder({
-      grid: {
-        matrix: numericGrid
-      },
-      diagonalAllowed: false,
-      includeStartNode: false
-    });
-    const {x,y} = this.position.asRoundedPosition();
-    const start: IPoint = {x,y};
-    const path = aStartFinder.findPath(start, {x: 5, y: 10})
-    if (path.length === 0) {
-      return false;
-    }
-    const [nextX, nextY] = path[0]
-
-    const targetLeft = nextX * 36
-    const targetTop = nextY * 36
-
-    if (targetTop < this.top - 8) return 'UP';
-    if (targetLeft < this.left) return 'LEFT';
-    if (targetTop > this.top) return 'DOWN';
-    if (targetLeft > this.left) {
-      return 'RIGHT';
-    }
-
-    return false;
-  }
-
   shoot(): Round | undefined {
     if (this.reloading) {
       return;
