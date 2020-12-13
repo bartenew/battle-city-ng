@@ -39,7 +39,7 @@ export class DirectorService {
     if (this.store.gameState.enemies.size < 1) {
       this.spawnEnemy();
     }
-    //this.gameStore.moveEnemies()
+    this.moveEnemies()
   }
 
   animate(now: number) {
@@ -128,6 +128,15 @@ export class DirectorService {
 
   moveEnemies() {
     const gameState = this.store.gameState;
+    gameState.enemies.forEach(enemy => {
+      const directionToBase = enemy.nextDirection(gameState.grid);
+      if (directionToBase === false) {
+        const round = enemy.shoot()
+        if (round) gameState.rounds.add(round);
+      }
+      const blocked = !enemy.move(gameState.grid, directionToBase);
+      
+    })
     this.store.gameState = gameState;
   }
 

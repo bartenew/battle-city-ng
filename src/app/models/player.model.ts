@@ -38,10 +38,13 @@ export default class Player extends Tile {
       this.position = old;
       return false;
     }
+    console.log(this.position.asRoundedPosition())
     return true;
   }
 
   protected isBlocked(grid: Tile[][]) {
+    if (this.position.y < 0) return true
+
     const targetX = Math.floor(this.position.x);
     const targetY = Math.floor(this.position.y);
 
