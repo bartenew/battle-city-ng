@@ -4,7 +4,7 @@ export const TILE_SPRITES: Record<string, string> = {
   BRICK: 'assets/sprites/wall.bmp',
   CONCRETE: 'assets/sprites/concrete.bmp',
   BUSH: 'assets/sprites/bush.bmp',
-  EXPLODED: 'assets/sprites/exp_small.bmp',
+  EXPLODED: 'assets/sprites/explosion.gif',
   WATER: 'assets/sprites/water.gif',
   BASE: 'assets/sprites/base.bmp'
 }
@@ -20,7 +20,7 @@ export const PLAYER_SPRITE = {
   UP: ['assets/sprites/player/up_1.bmp', 'assets/sprites/player/up_2.bmp'],
   RIGHT: ['assets/sprites/player/right_1.bmp', 'assets/sprites/player/right_2.bmp'],
   DOWN: ['assets/sprites/player/down_1.bmp', 'assets/sprites/player/down_2.bmp'],
-  LEFT: ['assets/sprites/player/left_1.bmp', 'assets/sprites/player/left_2.bmp'],
+  LEFT: ['assets/spritese/player/left_1.bmp', 'assets/sprites/player/left_2.bmp'],
   ROUND_UP: 'assets/sprites/round_up.bmp',
   ROUND_RIGHT: 'assets/sprites/round_right.bmp',
   ROUND_DOWN: 'assets/sprites/round_down.bmp',
