@@ -30,6 +30,8 @@ export const PLAYER_SPRITE = {
 export const AUDIO = {
   START: 'assets/audio/game_start.mp3',
   SHOT: 'assets/audio/player_shot.wav',
+  GAME_OVER: 'assets/audio/game_over.wav',
+
 }
 export const HIT_SOUNDS: Record<string, string> = {
   BRICK: 'assets/audio/hit_brick.wav',

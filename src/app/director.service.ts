@@ -17,23 +17,28 @@ import {IPoint} from "astar-typescript/dist/interfaces/astar.interfaces";
 export class DirectorService {
 
   fiveSecondTimer = 0;
+
   constructor(private store: GameStoreService, private audio: AudioService, private gridService: GridService) {
   }
 
   start() {
-    this.gridService.loadGrid().toPromise().then(grid => {
-      this.store.reset();
-      const newState = this.store.gameState;
-      newState.grid = grid;
-      this.store.gameState = newState;
-      if (environment.production) {
-        this.audio.play(AUDIO.START)
-      }
+    this.reset().then(() => {
       this.animate(0);
-    })
+    });
   }
 
-  frame(now: number) {
+  async reset() {
+    const grid = await this.gridService.loadGrid().toPromise();
+    this.store.reset();
+    const newState = this.store.gameState;
+    newState.grid = grid;
+    this.store.gameState = newState;
+    if (environment.production) {
+      this.audio.play(AUDIO.START)
+    }
+  }
+
+  async frame(now: number) {
     // fly rounds
     // spawn enemies
     // move enemies
@@ -46,11 +51,15 @@ export class DirectorService {
       this.fiveSecondTimer = now;
     }
     this.moveEnemies()
+    if (this.store.baseTile.type === "EMPTY") {
+      await this.gameOver();
+    }
   }
 
   animate(now: number) {
-    this.frame(now)
-    requestAnimationFrame(this.animate.bind(this));
+    this.frame(now).then(() => {
+      requestAnimationFrame(this.animate.bind(this));
+    })
   }
 
   hitTile(round: Round, position: Position) {
@@ -133,6 +142,8 @@ export class DirectorService {
     this.store.gameState = gameState;
   }
 
+  // new idea
+  // set direction // wait for 3 seconds // change direction if blocked
   moveEnemies() {
     const gameState = this.store.gameState;
     gameState.enemies.forEach(enemy => {
@@ -140,8 +151,6 @@ export class DirectorService {
       if (path.length === 0) {
         const round = enemy.shoot()
         round && gameState.rounds.add(round);
-
-
         enemy.move(gameState.grid, 'RIGHT')
         return
       }
@@ -180,9 +189,18 @@ export class DirectorService {
       diagonalAllowed: false,
       includeStartNode: false
     });
-    const {x,y} = posOne.asRoundedPosition();
-    const start: IPoint = {x,y};
-    return  aStartFinder.findPath(start, posTwo);
+    const {x, y} = posOne.asRoundedPosition();
+    const start: IPoint = {x, y};
+    return aStartFinder.findPath(start, posTwo);
+  }
+
+  async gameOver() {
+    await this.audio.gameOver.play()
+    alert('Game Over, pal');
+    const yes = confirm('Restart?')
+    if (yes) {
+      await this.reset();
+    }
   }
 
   private isInGrid(position: Position) {

@@ -29,6 +29,11 @@ export class GameStoreService {
     this._gameState.next(newGameState);
   }
 
+  get baseTile() {
+    const {grid} = this.gameState;
+    return grid[12][5];
+  }
+
   setTile(tile: Tile) {
     const newState = this.gameState;
     newState.grid[tile.position.y][tile.position.x] = tile;
