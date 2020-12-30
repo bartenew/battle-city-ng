@@ -71,9 +71,9 @@ export class DirectorService {
     })
   }
 
-  hitTile(round: Round, position: Position) {
+  hitTile(round: Round, coords: number[]) {
     const gameState = this.gameState;
-    const {x, y} = position;
+    const [y, x] = coords;
     const hitTile = gameState.grid[y][x]
     if (hitTile.destroyable) {
       const explodedTile = new ExplodedTile(new Position(x, y));
@@ -128,9 +128,9 @@ export class DirectorService {
 
   flyRound(round: Round) {
     round.move();
-    const isHit = round.isHit(this.store.gameState.grid);
-    if (isHit) {
-      this.hitTile(round, round.position.asRoundedPosition())
+    const hitCoords = round.isHit(this.store.gameState.grid);
+    if (hitCoords.length) {
+      this.hitTile(round, hitCoords)
     }
     if (!this.isInGrid(round.position)) {
       this.removeRound(round);

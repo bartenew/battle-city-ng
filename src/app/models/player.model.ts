@@ -51,12 +51,12 @@ export default class Player extends Tile {
     for (let y = targetY; y < targetY + 2; y++) {
       for (let x = targetX; x < targetX + 2; x++) {
         const tile = grid[y][x];
-        if (!tile) continue;
+        if (!tile || tile.walkable) continue;
         // player bitmap is 28x28 while tile is 36x36
-        const xOverlaps = this.left - 8 < tile.right && this.right - 8 > tile.left
+        const xOverlaps = this.left + 8 < tile.right && this.right > tile.left + 8;
         const yOverlaps = this.top - 8 < tile.bottom && this.bottom - 8 > tile.top;
         const collision = xOverlaps && yOverlaps;
-        if (collision && !tile.walkable) {
+        if (collision) {
           return true;
         }
       }

@@ -31,15 +31,22 @@ export class Round extends Tile {
     this.position = this.position.move(this.speed);
   }
 
-  isHit(grid: Tile[][]) {
+  isHit(grid: Tile[][]): number[] {
     const {x, y} = this.position.asRoundedPosition();
+    if ((grid[y] || [])[x] === undefined) return [];
 
-    if((grid[y] || [])[x] === undefined) return false;
+    for (let i = 0; i < y + 1; i++) {
+      for (let j = 0; j < x + 1; j++) {
+        const tile = grid[i][j];
+        // round is 8x8 bmp while tile is 36x36
+        const xOverlaps = this.left + 14 < tile.right && this.right - 14 > tile.left
+        const yOverlaps = this.top < tile.bottom && this.bottom - 28 > tile.top;
 
-    const tile = grid[y][x];
-    // round is 8x8 bmp while tile is 36x36
-    const xOverlaps = this.left - 28 < tile.right && this.right - 28 > tile.left
-    const yOverlaps = this.top - 28 < tile.bottom && this.bottom + 28 > tile.top;
-    return xOverlaps && yOverlaps && !tile.walkable;
+        if (xOverlaps && yOverlaps && !tile.walkable) {
+          return [i, j];
+        }
+      }
+    }
+    return []
   }
 }
